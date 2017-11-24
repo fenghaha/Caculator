@@ -31,14 +31,14 @@ public class MyStack<E> {
     }
 
     public E pop() throws Exception {//出栈
-        if (isEmpty()) {
+        if (empty()) {
             throw new Exception("栈空不能出栈");
         }
         return (E) this.arrayObj[top--];   //返回栈顶元素,栈顶指针下移,栈中元素减少一个
     }
 
     public E peek() throws Exception {//获取栈顶
-        if (isEmpty()) {
+        if (empty()) {
             throw new Exception("栈为空！");
         }
         return (E) this.arrayObj[getElementCount()];
@@ -53,7 +53,7 @@ public class MyStack<E> {
     }
 
 
-    public boolean isEmpty() {//判断栈是否为空
+    public boolean empty() {//判断栈是否为空
         return this.top == -1;
     }
 
@@ -64,5 +64,8 @@ public class MyStack<E> {
 
     public int getElementCount() {
         return this.top;
+    }
+    public int size(){
+        return top+1;
     }
 }

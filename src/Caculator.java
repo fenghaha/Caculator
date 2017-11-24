@@ -50,7 +50,7 @@ public class Caculator {
     //把中缀表达式转化为后缀表达式
     private String infixToSuffix(String infix) throws Exception {
         StringBuffer stbf = new StringBuffer();
-        Stack<Character> mystack = new Stack<>();//建立一个符号栈暂存符号
+        MyStack<Character> mystack = new MyStack<>();//建立一个符号栈暂存符号
         char s[] = infix.toCharArray();
         int mark = 0;
         if (s[0] == '-') {
