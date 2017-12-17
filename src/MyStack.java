@@ -6,13 +6,13 @@ public class MyStack<E> {
     private int maxSize;//栈的最大容量
     private E arrayObj[];//数组实现栈
     private int top;//栈顶指针  
-
+@SuppressWarnings("unchecked")
     public MyStack() {
         this.maxSize = DEFAULT_SIZE;//初始化栈容量
         this.arrayObj = (E[]) new Object[this.maxSize];
         top = -1;
     }
-
+    @SuppressWarnings("unchecked")
     public MyStack(int size) {
         this.maxSize = size;
         this.arrayObj = (E[]) new Object[this.maxSize];
@@ -30,7 +30,7 @@ public class MyStack<E> {
         this.arrayObj[++top] = element;//压入栈并栈顶指针上移
     }
 
-    public E pop() throws Exception {//出栈
+    E pop() throws Exception {//出栈
         if (empty()) {
             throw new Exception("栈空不能出栈");
         }

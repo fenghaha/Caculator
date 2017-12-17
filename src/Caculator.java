@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class Caculator {
     private Scanner scanner = new Scanner(System.in);
     private final double PI = 3.14159265358;//pi
@@ -122,69 +121,53 @@ public class Caculator {
     }
 
     private void add(MyStack<Double> container) throws Exception {//加
-        ans = container.pop();
-        ans += container.peek();
-        container.pop();
-        container.push(ans);
+        container.push(container.pop()+container.pop());
     }
 
     private void minus(MyStack<Double> container) throws Exception {//减
-        ans = container.peek();
-        container.pop();
-        ans = container.peek() - ans;
-        container.pop();
-        container.push(ans);
+        ans = container.pop();
+        container.push(container.pop()-ans);
     }
 
     private void mul(MyStack<Double> container) throws Exception {//乘
-        ans = container.peek();
-        container.pop();
-        ans *= container.peek();
-        container.pop();
-        container.push(ans);
+        container.push(container.pop()* container.pop());
     }
 
     private void div(MyStack<Double> container) throws Exception {//除
         ans = container.pop();
         if (ans == 0)
             throw new ArithmeticException();//除0错误
-        ans = container.peek() / ans;
-        container.pop();
+        ans = container.pop() / ans;
         container.push(ans);
     }
 
     private void pow(MyStack<Double> container) throws Exception {//乘方
         ans = container.pop();
-        ans = Math.pow(container.peek(), ans);
-        container.pop();
+        ans = Math.pow(container.pop(), ans);
         container.push(ans);
     }
 
     private void sin(MyStack<Double> container) throws Exception {//正弦
-        ans = Math.sin(container.pop());
-        container.push(ans);
+       ;
+        container.push(Math.sin(container.pop()));
     }
 
     private void cos(MyStack<Double> container) throws Exception {//余弦
-        ans = Math.cos(container.pop());
-        container.push(ans);
+
+        container.push(Math.cos(container.pop()));
     }
 
     private void tan(MyStack<Double> container) throws Exception {//正切
-        ans = Math.tan(container.pop());//出栈并计算tan
-        container.push(ans);//压入栈
+       //出栈并计算tan
+        container.push( Math.tan(container.pop()));//压入栈
     }
 
     private void ln(MyStack<Double> container) throws Exception {//自然对数
-        ans = Math.log(container.peek());
-        container.pop();
-        container.push(ans);
+        container.push( Math.log(container.pop()));
     }
 
     private void lg(MyStack<Double> container) throws Exception {//常用对数
-        ans = Math.log10(container.peek());
-        container.pop();
-        container.push(ans);
+        container.push(Math.log10(container.pop()));
     }
 
     private void abs(MyStack<Double> container) throws Exception {//绝对值
@@ -245,7 +228,7 @@ public class Caculator {
         return container.pop();//返回最终结果并清空栈
     }
 
-    public void start() {
+    protected void start() {
         System.out.println("———————— This is a culculator ————————\n可计算+ - * /,乘方a^b,三角函数sin(x),cos(x),tan(x),lgx,lnx,可用pi和e");
         double result;//存放结果
         while (true) {//持续运行
